@@ -5,8 +5,8 @@
 /* Theme tokens — edit light defaults in :root, dark overrides in [data-theme="dark"] */
 :root {
   color-scheme: light;
-  --color-bg: #ffffff;
-  --color-surface: rgb(250, 250, 250);
+  --color-bg: #fafafa;
+  --color-surface: rgb(235, 250, 255);
   --color-text: #000000;
   --color-text-muted: rgb(85, 85, 85);
   --color-border: rgb(163, 163, 163);
@@ -23,12 +23,20 @@
   --color-menu-bg: #ffffff;
   --shadow-hover: 0 0.25rem 0.65rem rgba(0, 0, 0, 0.12);
   --shadow-hover-strong: 0 0.35rem 0.9rem rgba(0, 0, 0, 0.18);
+  /* Project “TV” frame (dark plastic; reads as a screen in both themes) */
+  --tv-bezel-top: #5c5c5c;
+  --tv-bezel-mid: #2e2e2e;
+  --tv-bezel-bottom: #1a1a1a;
+  --tv-screen-matte: #0a0a0a;
+  --tv-stand: #252525;
+  --tv-stand-foot: #1c1c1c;
+  --details-glow-hover: 0 0.4rem 1rem rgba(0, 0, 0, 0.08), 0 0 1.75rem rgba(70, 110, 200, 0.28);
 }
 
 [data-theme="dark"] {
   color-scheme: dark;
-  --color-bg: #121212;
-  --color-surface: #1e1e1e;
+  --color-bg: #1e1e34;
+  --color-surface: #1c2753;
   --color-text: #e8e8e8;
   --color-text-muted: #a0a0a0;
   --color-border: #444444;
@@ -45,6 +53,13 @@
   --color-menu-bg: #1e1e1e;
   --shadow-hover: 0 0.35rem 0.85rem rgba(0, 0, 0, 0.45);
   --shadow-hover-strong: 0 0.45rem 1.1rem rgba(0, 0, 0, 0.55);
+  --tv-bezel-top: #6a6a6a;
+  --tv-bezel-mid: #3a3a3a;
+  --tv-bezel-bottom: #222222;
+  --tv-screen-matte: #050505;
+  --tv-stand: #2e2e2e;
+  --tv-stand-foot: #202020;
+  --details-glow-hover: 0 0.45rem 1.2rem rgba(0, 0, 0, 0.45), 0 0 2rem rgba(140, 175, 255, 0.22);
 }
 
 * {
@@ -508,6 +523,13 @@ section {
   border: var(--color-border-strong) 0.1rem solid;
   border-color: var(--color-border);
   text-align: center;
+  box-shadow: none;
+  transition: box-shadow 280ms ease, border-color 280ms ease;
+}
+
+.details-container:hover {
+  box-shadow: var(--details-glow-hover);
+  border-color: var(--color-border-strong);
 }
 
 .section-container {
@@ -572,10 +594,115 @@ article .icon-svg {
   background: var(--color-surface);
 }
 
+/* Project cards: retro TV (bezel + screen + stand) */
+#projects .project-tv-article {
+  justify-content: center;
+  width: 100%;
+}
+
+.project-tv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 22rem;
+  margin: 0 auto;
+}
+
+.project-tv__bezel {
+  position: relative;
+  width: 100%;
+  padding: 0.65rem 0.75rem 1.1rem;
+  border-radius: 0.65rem;
+  background: linear-gradient(
+    165deg,
+    var(--tv-bezel-top) 0%,
+    var(--tv-bezel-mid) 42%,
+    var(--tv-bezel-bottom) 100%
+  );
+  box-shadow:
+    0 0.35rem 0.75rem rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    inset 0 -3px 0 rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(0, 0, 0, 0.45);
+}
+
+/* Power LED on the “chin” */
+.project-tv__bezel::after {
+  content: "";
+  position: absolute;
+  bottom: 0.4rem;
+  right: 0.85rem;
+  width: 0.35rem;
+  height: 0.35rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #8ef5b4, #1e7a45);
+  box-shadow: 0 0 0.4rem rgba(46, 204, 113, 0.65);
+}
+
+.project-tv__screen {
+  position: relative;
+  border-radius: 0.2rem;
+  overflow: hidden;
+  background: var(--tv-screen-matte);
+  box-shadow:
+    inset 0 0 0 2px rgba(0, 0, 0, 0.9),
+    inset 0 0 0 3px rgba(255, 255, 255, 0.08),
+    inset 0 0 1.5rem rgba(0, 0, 0, 0.55);
+}
+
+/* Subtle CRT-style scanlines */
+.project-tv__screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  opacity: 0.22;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 2px,
+    rgba(0, 0, 0, 0.12) 2px,
+    rgba(0, 0, 0, 0.12) 3px
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-tv__screen::after {
+    opacity: 0.12;
+  }
+}
+
 .project-img {
-  border-radius: 2rem;
-  width: 90%;
-  height: 90%;
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0.12rem;
+}
+
+.project-tv__stand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0.15rem;
+}
+
+.project-tv__stand-neck {
+  width: 32%;
+  height: 0.5rem;
+  background: linear-gradient(180deg, var(--tv-stand), var(--tv-bezel-bottom));
+  border-radius: 0 0 0.15rem 0.15rem;
+  box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.35);
+}
+
+.project-tv__stand-foot {
+  width: 52%;
+  height: 0.42rem;
+  margin-top: -1px;
+  background: linear-gradient(180deg, var(--tv-stand), var(--tv-stand-foot));
+  border-radius: 0 0 0.35rem 0.35rem;
+  box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.35);
 }
 
 .project-title {
