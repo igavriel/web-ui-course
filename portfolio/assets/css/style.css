@@ -332,6 +332,45 @@ section {
   margin-bottom: 1rem;
 }
 
+.profile-typing {
+  text-align: center;
+}
+
+.profile-typing__inner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 1.35em;
+  min-width: 19ch;
+  max-width: 100%;
+}
+
+.profile-typing__text {
+  text-align: left;
+}
+
+.profile-typing__cursor {
+  display: inline-block;
+  width: 0.12rem;
+  height: 1.05em;
+  margin-left: 0.12rem;
+  background-color: var(--color-accent);
+  vertical-align: -0.08em;
+  animation: profile-typing-cursor 1s step-end infinite;
+}
+
+@keyframes profile-typing-cursor {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .profile-typing__cursor {
+    display: none;
+  }
+}
+
 .title {
   font-size: 3rem;
   text-align: center;

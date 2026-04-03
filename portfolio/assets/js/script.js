@@ -38,3 +38,62 @@ function initTheme() {
 }
 
 initTheme();
+
+function initProfileTyping() {
+  const el = document.getElementById("profile-typing");
+  if (!el) return;
+
+  const titles = [
+    "Software Developer",
+    "System Architect",
+    "Game Developer",
+  ];
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    el.textContent = titles.join(" | ");
+    return;
+  }
+
+  let titleIndex = 0;
+  let charIndex = 0;
+  let deleting = false;
+
+  const typeMs = 80;
+  const deleteMs = 42;
+  const pauseAfterTypeMs = 2400;
+  const pauseBeforeNextMs = 450;
+
+  function step() {
+    const full = titles[titleIndex];
+
+    if (!deleting && charIndex < full.length) {
+      el.textContent = full.slice(0, charIndex + 1);
+      charIndex += 1;
+      window.setTimeout(step, typeMs);
+      return;
+    }
+
+    if (!deleting && charIndex === full.length) {
+      window.setTimeout(() => {
+        deleting = true;
+        step();
+      }, pauseAfterTypeMs);
+      return;
+    }
+
+    if (deleting && charIndex > 0) {
+      charIndex -= 1;
+      el.textContent = full.slice(0, charIndex);
+      window.setTimeout(step, deleteMs);
+      return;
+    }
+
+    deleting = false;
+    titleIndex = (titleIndex + 1) % titles.length;
+    window.setTimeout(step, pauseBeforeNextMs);
+  }
+
+  step();
+}
+
+initProfileTyping();
