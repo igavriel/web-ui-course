@@ -21,6 +21,8 @@
   --color-btn-ghost-hover-border: rgb(255, 255, 255);
   --color-hamburger: #000000;
   --color-menu-bg: #ffffff;
+  --shadow-hover: 0 0.25rem 0.65rem rgba(0, 0, 0, 0.12);
+  --shadow-hover-strong: 0 0.35rem 0.9rem rgba(0, 0, 0, 0.18);
 }
 
 [data-theme="dark"] {
@@ -41,6 +43,8 @@
   --color-btn-ghost-hover-border: #e8e8e8;
   --color-hamburger: #e8e8e8;
   --color-menu-bg: #1e1e1e;
+  --shadow-hover: 0 0.35rem 0.85rem rgba(0, 0, 0, 0.45);
+  --shadow-hover-strong: 0 0.45rem 1.1rem rgba(0, 0, 0, 0.55);
 }
 
 * {
@@ -85,11 +89,20 @@ a,
   border: 0.1rem solid var(--color-border);
   border-radius: 2rem;
   cursor: pointer;
-  transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease;
+  transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease, transform 200ms ease,
+    box-shadow 200ms ease;
 }
 
 .theme-toggle:hover {
   border-color: var(--color-border-strong);
+  background: var(--color-bg);
+  color: var(--color-text);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-hover);
+}
+
+.theme-toggle:active {
+  transform: translateY(0);
 }
 
 .theme-toggle:focus-visible {
@@ -314,11 +327,77 @@ section {
   gap: 1rem;
 }
 
-/* ICONS */
+/* ICONS — inline SVG sprite in index.html (sources: simple-icons@11, lucide-static@0.460.0 on jsDelivr) */
 
 .icon {
   cursor: pointer;
   height: 2rem;
+}
+
+.icon-svg {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  color: var(--color-text);
+  vertical-align: middle;
+}
+
+.icon-svg use {
+  pointer-events: none;
+}
+
+#socials-container .social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text);
+  padding: 0.45rem;
+  border-radius: 2rem;
+  text-decoration: none;
+  transition: transform 200ms ease, color 200ms ease, background-color 200ms ease, box-shadow 200ms ease;
+}
+
+#socials-container .social-link:hover {
+  color: var(--color-link-hover);
+  background-color: var(--color-surface);
+  transform: translateY(-3px) scale(1.06);
+  box-shadow: var(--shadow-hover-strong);
+  text-decoration: none;
+}
+
+#socials-container .social-link:active {
+  transform: translateY(-1px) scale(1.03);
+}
+
+.arrow.arrow-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: var(--color-text);
+  cursor: pointer;
+  border-radius: 0.35rem;
+  transition: transform 200ms ease, color 200ms ease, filter 200ms ease;
+}
+
+.arrow.arrow-btn:hover {
+  color: var(--color-link-hover);
+  transform: translateY(3px);
+  filter: drop-shadow(0 0.15rem 0.25rem rgba(0, 0, 0, 0.2));
+}
+
+[data-theme="dark"] .arrow.arrow-btn:hover {
+  filter: drop-shadow(0 0.2rem 0.45rem rgba(0, 0, 0, 0.5));
+}
+
+.arrow.arrow-btn:active {
+  transform: translateY(5px);
+}
+
+.arrow.arrow-btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 0.25rem;
 }
 
 /* BUTTONS */
@@ -331,7 +410,8 @@ section {
 
 .btn {
   font-weight: 600;
-  transition: all 300ms ease;
+  transition: transform 200ms ease, box-shadow 200ms ease, background-color 200ms ease, border-color 200ms ease,
+    color 200ms ease;
   padding: 1rem;
   width: 8rem;
   border-radius: 2rem;
@@ -356,6 +436,13 @@ section {
 
 .btn-color-1:hover {
   background: var(--color-accent-hover);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover-strong);
+}
+
+.btn-color-1:active {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-hover);
 }
 
 .btn-color-2 {
@@ -364,6 +451,13 @@ section {
 
 .btn-color-2:hover {
   border: var(--color-btn-ghost-hover-border) 0.1rem solid;
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover-strong);
+}
+
+.btn-color-2:active {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-hover);
 }
 
 .btn-container {
@@ -459,7 +553,7 @@ article {
   gap: 0.5rem;
 }
 
-article .icon {
+article .icon-svg {
   cursor: default;
 }
 
@@ -526,7 +620,8 @@ article .icon {
   cursor: default;
 }
 
-.email-icon {
+.email-icon.icon-svg {
+  width: 2.5rem;
   height: 2.5rem;
 }
 
