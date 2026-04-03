@@ -5,9 +5,14 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Portfolio of Ilan Gavriel — software developer, system architect, and game developer."
+  />
+  <meta name="author" content="Ilan Gavriel" />
   <title>Ilan Gavriel</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="mediaqueries.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/mediaqueries.css" />
 </head>
 
 <body>
@@ -95,12 +100,12 @@
           <span></span>
           <span></span>
         </div>
-        <div class="menu-links">
+        <ul class="menu-links">
           <li><a href="#about" onclick="toggleMenu()">About</a></li>
           <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
           <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
           <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-        </div>
+        </ul>
       </div>
     </div>
   </nav>
@@ -109,7 +114,7 @@
   <!------------------------------------------------------------------------------------------------------------------>
   <section id="profile">
     <div class="section__pic-container">
-      <img src="./assets/profile-pic.png" alt="profile picture" />
+      <img src="./assets/img/profile-pic.png" alt="profile picture" />
     </div>
     <div class="section__text">
       <p class="section__text__p1">Hello, I'm</p>
@@ -137,7 +142,7 @@
   <!------------------------------------------------------------------------------------------------------------------>
   <section id="about">
     <p class="section__text__p1">Get To Know More</p>
-    <h1 class="title">About Me</h1>
+    <h2 class="title">About Me</h2>
     <div class="section-container">
       <div class="about-details-container">
         <div class="about-containers">
@@ -173,11 +178,11 @@
   <!------------------------------------------------------------------------------------------------------------------>
   <section id="experience">
     <p class="section__text__p1">Explore My</p>
-    <h1 class="title">Experience</h1>
+    <h2 class="title">Experience</h2>
     <div class="experience-details-container">
       <div class="about-containers">
         <div class="details-container">
-          <h2 class="experience-sub-title">Game Development</h2>
+          <h3 class="experience-sub-title">Game Development</h3>
           <div class="article-container">
             <ul>
               <li>Unity 6</li>
@@ -187,7 +192,7 @@
           </div>
         </div>
         <div class="details-container">
-          <h2 class="experience-sub-title">Frontend Development</h2>
+          <h3 class="experience-sub-title">Frontend Development</h3>
           <div class="article-container">
             <ul>
               <li>HTML</li>
@@ -199,7 +204,7 @@
           </div>
         </div>
         <div class="details-container">
-          <h2 class="experience-sub-title">Backend Development</h2>
+          <h3 class="experience-sub-title">Backend Development</h3>
           <div class="article-container">
             <ul>
               <li>PostgreSQL</li>
@@ -210,7 +215,7 @@
           </div>
         </div>
         <div class="details-container">
-          <h2 class="experience-sub-title">Other</h2>
+          <h3 class="experience-sub-title">Other</h3>
           <div class="article-container">
             <ul>
               <li>Git</li>
@@ -235,14 +240,14 @@
   <!------------------------------------------------------------------------------------------------------------------>
   <section id="projects">
     <p class="section__text__p1">Browse My Recent</p>
-    <h1 class="title">Projects</h1>
+    <h2 class="title">Projects</h2>
     <div class="experience-details-container">
       <div class="about-containers">
         <div class="details-container color-container">
           <div class="article-container">
-            <img src="./assets/project-footbag.png" alt="Footbag" class="project-img" />
+            <img src="./assets/img/project-footbag.png" alt="Footbag" class="project-img" />
           </div>
-          <h2 class="experience-sub-title project-title">Footbag</h2>
+          <h3 class="experience-sub-title project-title">Footbag</h3>
           <div class="btn-container">
             <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/igavriel/unity-poc/tree/main/foot-bag'">
               Github
@@ -254,9 +259,9 @@
         </div>
         <div class="details-container color-container">
           <div class="article-container">
-            <img src="./assets/project-broken-mirror.png" alt="Broken Mirror" class="project-img" />
+            <img src="./assets/img/project-broken-mirror.png" alt="Broken Mirror" class="project-img" />
           </div>
-          <h2 class="experience-sub-title project-title">Broken Mirror</h2>
+          <h3 class="experience-sub-title project-title">Broken Mirror</h3>
           <div class="btn-container">
             <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/igavriel/unity-poc/tree/main/broken-mirror'">
               Github
@@ -268,9 +273,9 @@
         </div>
         <div class="details-container color-container">
           <div class="article-container">
-            <img src="./assets/project-the-last-spark.png" alt="The Last Spark" class="project-img" />
+            <img src="./assets/img/project-the-last-spark.png" alt="The Last Spark" class="project-img" />
           </div>
-          <h2 class="experience-sub-title project-title">The Last Spark</h2>
+          <h3 class="experience-sub-title project-title">The Last Spark</h3>
           <div class="btn-container">
             <button class="btn btn-color-2 project-btn" onclick="location.href='https://github.com/igavriel/unity-poc/tree/main/the-last-spark'">
               Github
@@ -282,9 +287,9 @@
         </div>
         <div class="details-container color-container">
           <div class="article-container">
-            <img src="./assets/project-balzzing-ballon.png" alt="Blazing Balloon" class="project-img" />
+            <img src="./assets/img/project-balzzing-ballon.png" alt="Blazing Balloon" class="project-img" />
           </div>
-          <h2 class="experience-sub-title project-title">Blazing Balloon</h2>
+          <h3 class="experience-sub-title project-title">Blazing Balloon</h3>
           <div class="btn-container">
             <button class="btn btn-color-2 project-btn" onclick="location.href='https://igavriel.itch.io/blazing-balloon'">
               itch.io
@@ -302,7 +307,7 @@
   <!------------------------------------------------------------------------------------------------------------------>
   <section id="contact">
     <p class="section__text__p1">Get in Touch</p>
-    <h1 class="title">Contact Me</h1>
+    <h2 class="title">Contact Me</h2>
     <div class="contact-info-upper-container">
       <div class="contact-info-container">
         <svg class="icon icon-svg contact-icon email-icon" aria-hidden="true"><use href="#lucide-mail"></use></svg>
